@@ -6,7 +6,49 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
+    use {
+        "rest-nvim/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("rest-nvim").setup({
+                -- Open request results in a horizontal split
+                result_split_horizontal = false,
+                -- Keep the http file buffer above|left when split horizontal|vertical
+                result_split_in_place = false,
+                -- Skip SSL verification, useful for unknown certificates
+                skip_ssl_verification = false,
+                -- Encode URL before making request
+                encode_url = true,
+                -- Highlight request on run
+                highlight = {
+                    enabled = true,
+                    timeout = 150,
+                },
+                result = {
+                    -- toggle showing URL, HTTP info, headers at top the of result window
+                    show_url = true,
+                    -- show the generated curl command in case you want to launch
+                    -- the same request via the terminal (can be verbose)
+                    show_curl_command = false,
+                    show_http_info = true,
+                    show_headers = true,
+                    -- executables or functions for formatting response body [optional]
+                    -- set them to false if you want to disable them
+                    formatters = {
+                        json = "jq",
+                        html = function(body)
+                            return vim.fn.system({"tidy", "-i", "-q", "-"}, body)
+                        end
+                    },
+                },
+                -- Jump to request line on run
+                jump_to_request = false,
+                env_file = '.env',
+                custom_dynamic_variables = {},
+                yank_dry_run = true,
+            })
+        end
+    }
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
@@ -15,9 +57,10 @@ return require('packer').startup(function(use)
     }
     use({
         "folke/trouble.nvim",
+        requires = { {'nvim-tree/nvim-web-devicons' } },
         config = function()
             require("trouble").setup {
-                icons = false,
+                -- icons = false,
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
@@ -31,6 +74,7 @@ return require('packer').startup(function(use)
     use 'David-Kunz/jester'
     use('tpope/vim-fugitive')
     use('tpope/vim-repeat')
+    use('wellle/targets.vim')
     use('tpope/vim-surround')
     use('tpope/vim-speeddating')
     use('folke/neodev.nvim')
@@ -57,6 +101,7 @@ return require('packer').startup(function(use)
         }
     }
     use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use('folke/tokyonight.nvim')
     use('ray-x/aurora')
     use({ 'MrcJkb/haskell-tools.nvim', requires = { { 'nvim-lua/plenary.nvim' } } })
     use 'mfussenegger/nvim-lint'

@@ -27,3 +27,5 @@ vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 
 vim.keymap.set("n", "<leader>/", vim.cmd.noh)
+
+vim.keymap.set("n", "<leader>h", "<Plug>RestNvim")
