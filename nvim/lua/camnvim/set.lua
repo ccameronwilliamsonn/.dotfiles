@@ -15,4 +15,5 @@ vim.opt.history = 10000
 vim.g.netrw_banner = 0
 vim.g.neoformat_haskell_ormolu = { exe = 'ormolu', args = {}}
 vim.g.neoformat_enabled_haskell = {'sortimports', 'ormolu' }
-
+vim.g.ignorecase = true
+vim.g.smartcase = true
