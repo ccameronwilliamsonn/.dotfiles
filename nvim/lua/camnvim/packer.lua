@@ -58,26 +58,20 @@ return require('packer').startup(function(use)
     use({
         "folke/trouble.nvim",
         requires = { {'nvim-tree/nvim-web-devicons' } },
-        config = function()
-            require("trouble").setup {
-                -- icons = false,
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
     })
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use('theprimeagen/harpoon')
+    -- use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use'sbdchd/neoformat'
-    use 'David-Kunz/jester'
+    -- use 'David-Kunz/jester'
     use('tpope/vim-fugitive')
+    use('tpope/vim-unimpaired')
     use('tpope/vim-repeat')
     use('wellle/targets.vim')
     use('tpope/vim-surround')
     use('tpope/vim-speeddating')
     use('folke/neodev.nvim')
+    use({ 'folke/todo-comments.nvim', requires = { {"nvim-lua/plenary.nvim"}}, })
     use('ray-x/lsp_signature.nvim')
     use {
         "windwp/nvim-autopairs",
@@ -100,9 +94,7 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},     -- Required
         }
     }
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
     use('folke/tokyonight.nvim')
-    use('ray-x/aurora')
     use({ 'MrcJkb/haskell-tools.nvim', requires = { { 'nvim-lua/plenary.nvim' } } })
     use 'mfussenegger/nvim-lint'
     use("eandrju/cellular-automaton.nvim")
