@@ -10,7 +10,7 @@ vim.opt.syntax = 'off'
 vim.opt.wildmode = 'longest,list'
 vim.opt.mouse = ''
 vim.opt.foldmethod = 'indent'
-vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = '99'
 vim.opt.history = 10000
 vim.g.netrw_banner = 0
 vim.g.neoformat_haskell_ormolu = { exe = 'ormolu', args = {}}

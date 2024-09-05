@@ -5,7 +5,9 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
+    use 'folke/flash.nvim'
     use 'wbthomason/packer.nvim'
+    use "nvim-treesitter/nvim-treesitter-context"
     use {
         "rest-nvim/rest.nvim",
         requires = { "nvim-lua/plenary.nvim" },
